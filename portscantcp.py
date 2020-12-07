@@ -1,17 +1,25 @@
 import socket
+import sys
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.settimeout(0.6)
+try:
+	ip = sys.argv[1]
+	rangeInitial = sys.argv[2]
+	finalRange = sys.argv[3]
+	time = int(sys.argv[4])
 
-ip = input("Digite o ip ou endereço: ")
-rangeInicial = int(input("Digite a porta inicial: "))
-rangeFinal = int(input("Digite a porta final: "))
+except:
+	print("Missing Values")
+	print("Usage: portscan.py <initialPort> <endPort> <time (min value: 1 - max value: 6>")
+	print("Example: portscan.py google.com 1 65535 5")
+	sys.exit(1)
 
-for port in range(rangeInicial, rangeFinal+1):
+for port in range(int(rangeInitial), int(finalRange)+1):
 	connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	connection.settimeout(0.6)
+	connection.settimeout(time*0.10)
 	result = connection.connect_ex((ip, port))
+
 	if result == 0:
-		print (port, "open")
+		print("IP: " + ip + " Port: " + str(port), "Open")
 	else:
-		print(port, "closed")
+		print("IP: " + ip + " Port: " + str(port), "Closed")
+
