@@ -1,11 +1,11 @@
-### DNS_BRUTE
+### PORTSCAN TCP/IP
 #### Scripts designed to search for open ports at a given IP address using TPC or UDP protocol
 
 <hr>
 
 
 ### USAGE: 
-#### python3 portscantcp <ip> <initial port> <end port> <time>
+#### PORTSCANTCP.PY: python3 portscantcp.py ip initial port end port time
 
 <hr>
 
